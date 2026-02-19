@@ -1,11 +1,11 @@
 # WebdriverIO-Example
 
-## 🎯 Test Application
+## Test Application
 
-**Primary**: [Sauce Demo](https://www.saucedemo.com/)
-**Secondary**: [Automation Exercise](https://automationexercise.com/)
+**Primary**: [Automation Exercise](https://automationexercise.com/)
+**Secondary**: [Sauce Demo](https://www.saucedemo.com/)
 
-## 🚀 Project Features
+## Project Features
 
 - Multi-layer framework (Page Object Model + Cucumber BDD)
 - API + UI combined testing
@@ -17,7 +17,7 @@
 - **Code Quality**: ESLint + Prettier for consistent code formatting
 - **Pre-commit Hooks**: Husky for automated code quality checks
 
-## 📋 Test Scenarios
+## Test Scenarios
 
 - User authentication (multiple user types)
 - Product management (search, filter, sort)
@@ -27,7 +27,7 @@
 - Cross-browser testing
 - Responsive design testing
 
-## 🛠️ Code Quality Tools
+## Code Quality Tools
 
 - **ESLint**: Static code analysis and best practices enforcement
 - **Prettier**: Automatic code formatting
