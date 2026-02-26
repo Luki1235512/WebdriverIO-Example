@@ -1,3 +1,5 @@
+const isHeadless = process.argv.includes("--headless");
+
 export const config: WebdriverIO.Config = {
   //
   // ====================
@@ -52,6 +54,18 @@ export const config: WebdriverIO.Config = {
   capabilities: [
     {
       browserName: "chrome",
+      "goog:chromeOptions": {
+        args: isHeadless
+          ? [
+              "--headless",
+              "--disable-gpu",
+              "--window-size=1920,1080",
+              "--no-sandbox",
+              "--disable-dev-shm-usage",
+            ]
+          : [],
+      },
+      "wdio:enforceWebDriverClassic": true,
     },
   ],
 
