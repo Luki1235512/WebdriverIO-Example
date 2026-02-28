@@ -16,8 +16,8 @@
   "main": "index.js",
   "scripts": {
     "wdio": "wdio run ./wdio.conf.ts",
-    "wdio:report": "npm run wdio && npm run allure:generate && npm run allure:open",
-    "wdio:serve": "npm run wdio && npm run allure:serve",
+    "wdio:report": "sh -c 'wdio run ./wdio.conf.ts \"$@\" || true && npm run allure:generate && npm run allure:open' --",
+    "wdio:serve": "sh -c 'wdio run ./wdio.conf.ts \"$@\" || true && npm run allure:serve' --",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",

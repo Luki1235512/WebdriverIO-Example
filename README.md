@@ -27,6 +27,39 @@
 - Cross-browser testing
 - Responsive design testing
 
+## Running Tests
+
+### Commands
+
+| Command               | Description                                     |
+| --------------------- | ----------------------------------------------- |
+| `npm run wdio`        | Run all tests                                   |
+| `npm run wdio:serve`  | Run all tests and open Allure report in browser |
+| `npm run wdio:report` | Run all tests, generate and open Allure report  |
+
+### Flags
+
+| Flag         | Description                                 | Example                                 |
+| ------------ | ------------------------------------------- | --------------------------------------- |
+| `--headless` | Run tests in headless mode (no browser UI)  | `npm run wdio -- --headless`            |
+| `--@<tag>`   | Run only tests with a specific Cucumber tag | `npm run wdio -- --@automationexercise` |
+
+### Examples
+
+```sh
+# Run all tests in headless mode
+npm run wdio -- --headless
+
+# Run only automationexercise tests
+npm run wdio -- --@automationexercise
+
+# Run only herokuapp tests with report
+npm run wdio:report -- --@herokuapp
+
+# Run automationexercise tests headless and serve Allure report
+npm run wdio:serve -- --headless --@automationexercise
+```
+
 ## Code Quality Tools
 
 - **ESLint**: Static code analysis and best practices enforcement

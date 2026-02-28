@@ -1,4 +1,9 @@
+import AllureReporter from "@wdio/allure-reporter";
+
 const isHeadless = process.argv.includes("--headless");
+
+const tagArg = process.argv.find((arg) => arg.startsWith("--@"));
+const tags = tagArg ? tagArg.slice(2) : "";
 
 export const config: WebdriverIO.Config = {
   //
@@ -146,7 +151,7 @@ export const config: WebdriverIO.Config = {
       {
         outputDir: "allure-results",
         disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: false,
+        disableWebdriverScreenshotsReporting: true,
       },
     ],
   ],
@@ -154,7 +159,7 @@ export const config: WebdriverIO.Config = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ["./features/**/step-definitions/steps.ts"],
+    require: ["./features/**/step-definitions/*.ts"],
     // <boolean> show full backtrace for errors
     backtrace: false,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -172,7 +177,7 @@ export const config: WebdriverIO.Config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "",
+    tags: tags,
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
@@ -277,8 +282,16 @@ export const config: WebdriverIO.Config = {
    * @param {number}             result.duration  duration of scenario in milliseconds
    * @param {object}             context          Cucumber World object
    */
-  // afterStep: function (step, scenario, result, context) {
-  // },
+  afterStep: async function (_step, _scenario, result, _context) {
+    if (!result.passed) {
+      const screenshot = await browser.takeScreenshot();
+      AllureReporter.addAttachment(
+        "Screenshot on failure",
+        Buffer.from(screenshot, "base64"),
+        "image/png",
+      );
+    }
+  },
   /**
    *
    * Runs after a Cucumber Scenario.
