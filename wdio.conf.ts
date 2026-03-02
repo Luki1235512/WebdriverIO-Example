@@ -5,6 +5,19 @@ const isHeadless = process.argv.includes("--headless");
 const tagArg = process.argv.find((arg) => arg.startsWith("--@"));
 const tags = tagArg ? tagArg.slice(2) : "";
 
+const specArg = process.argv.find(
+  (arg) =>
+    !arg.startsWith("-") &&
+    arg.endsWith(".feature") === false &&
+    arg !== "run" &&
+    !arg.includes("/") &&
+    !arg.includes("."),
+);
+
+const specs = specArg
+  ? [`./features/**/*${specArg}*.feature`]
+  : ["./features/**/*.feature"];
+
 export const config: WebdriverIO.Config = {
   //
   // ====================
@@ -29,7 +42,7 @@ export const config: WebdriverIO.Config = {
   // The path of the spec files will be resolved relative from the directory of
   // of the config file unless it's absolute.
   //
-  specs: ["./features/**/*.feature"],
+  specs: specs,
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'

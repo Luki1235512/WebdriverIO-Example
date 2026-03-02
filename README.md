@@ -58,6 +58,12 @@ npm run wdio:report -- --@herokuapp
 
 # Run automationexercise tests headless and serve Allure report
 npm run wdio:serve -- --headless --@automationexercise
+
+# Run only register-user feature file
+npm run wdio -- register-user
+
+# Run register-user feature headless with report
+npm run wdio:serve -- register-user --headless
 ```
 
 ## Code Quality Tools
