@@ -15,7 +15,7 @@ export default class Page {
 
   public async handleConsentPopup() {
     try {
-      const consentButton = await $(".fc-button-label");
+      const consentButton = $(".fc-button-label");
 
       if (await consentButton.isDisplayed()) {
         await consentButton.click();

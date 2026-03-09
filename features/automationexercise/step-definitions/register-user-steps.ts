@@ -28,7 +28,7 @@ When(/^I click Signup button$/, async () => {
 });
 
 When(/^I should see "([^"]*)" text$/, async (text: string) => {
-  const heading = await $(`//*[contains(text(), "${text}")]`);
+  const heading = $(`//*[contains(text(), "${text}")]`);
   await expect(heading).toBeDisplayed();
 });
 
