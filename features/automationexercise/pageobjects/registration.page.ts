@@ -74,10 +74,6 @@ class RegistrationPage extends Page {
     return $('a[data-qa="continue-button"]');
   }
 
-  public get accountDeletedMessage() {
-    return $('h2[data-qa="account-delete"]');
-  }
-
   public async fillAccountDetails(details: AccountDetails) {
     await this.titleMr.click();
     await this.inputPassword.setValue(details.password);

@@ -66,15 +66,6 @@ When(/^I click Continue button$/, async () => {
   await RegistrationPage.btnContinue.click();
 });
 
-When(/^I should see "([^"]*)" username$/, async (text: string) => {
-  const loggedInText = await $(`//*[contains(text(), "${text}")]`);
-  await expect(loggedInText).toBeDisplayed();
-});
-
-When(/^I click Delete Account button$/, async () => {
-  await HomePage.deleteAccountLink.click();
-});
-
 When(/^$/, async () => {
   //
 });

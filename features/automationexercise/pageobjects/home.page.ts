@@ -9,10 +9,6 @@ class HomePage extends Page {
     await super.open("");
     await this.handleConsentPopup();
   }
-
-  public get deleteAccountLink() {
-    return $('a[href="/delete_account"]');
-  }
 }
 
 export default new HomePage();
