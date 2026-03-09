@@ -14,3 +14,9 @@ Feature: User Registration on Automation Exercise
     When I click Continue button
     Then I should see "Logged in as" text
 
+  Scenario: Register with existing email
+    Given I am on the homepage
+    When I click on Signup/Login button
+    And I enter name and existing email address
+    And I click Signup button
+    Then I should see "Email Address already exist!" error message
