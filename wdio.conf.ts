@@ -273,8 +273,9 @@ export const config: WebdriverIO.Config = {
    * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
    * @param {object}                 context  Cucumber World object
    */
-  // beforeScenario: function (world, context) {
-  // },
+  beforeScenario: async function (_world, _context) {
+    await browser.deleteCookies();
+  },
   /**
    *
    * Runs before a Cucumber Step.
