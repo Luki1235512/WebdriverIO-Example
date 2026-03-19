@@ -10,7 +10,13 @@ for (const dir of ["allure-results"]) {
 
 const allArgs = process.argv.slice(2);
 const serve = allArgs.includes("--serve");
-const extraArgs = allArgs.filter((arg) => arg !== "--serve");
+
+const tagArg = allArgs.find((arg) => arg.startsWith("--@"));
+const extraArgs = allArgs.filter((arg) => arg !== "--serve" && arg !== tagArg);
+
+if (tagArg) {
+  extraArgs.push("--cucumberOpts.tags", tagArg.slice(2));
+}
 
 const result = spawnSync(
   "npx",
