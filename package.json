@@ -15,9 +15,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.ts",
-    "wdio:report": "sh -c 'wdio run ./wdio.conf.ts \"$@\" || true && npm run allure:generate && npm run allure:open' --",
-    "wdio:serve": "sh -c 'wdio run ./wdio.conf.ts \"$@\" || true && npm run allure:serve' --",
+    "wdio": "node scripts/testRunner.mjs",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",
@@ -25,8 +23,7 @@
     "prepare": "husky",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
-    "allure:serve": "allure serve allure-results",
-    "clean:old-history": "find allure-report/history -type f -mtime +10 -delete 2>/dev/null || true"
+    "allure:serve": "allure serve allure-results"
   },
   "lint-staged": {
     "*.ts": [
