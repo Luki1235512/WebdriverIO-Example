@@ -1,0 +1,14 @@
+{
+  "mode": "testops",
+  "debug": true,
+  "testops": {
+    "project": "PROJECT",
+    "api": {
+      "token": ""
+    },
+    "run": {
+      "complete": true
+    },
+    "uploadAttachments": true
+  }
+}

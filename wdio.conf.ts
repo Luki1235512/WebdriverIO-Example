@@ -1,4 +1,11 @@
 import AllureReporter from "@wdio/allure-reporter";
+import WDIOQaseReporterModule, {
+  afterRunHook,
+  beforeRunHook,
+  qase,
+} from "wdio-qase-reporter";
+
+const WDIOQaseReporter = WDIOQaseReporterModule.default;
 
 const isHeadless = process.argv.includes("--headless");
 
@@ -167,7 +174,23 @@ export const config: WebdriverIO.Config = {
         disableWebdriverScreenshotsReporting: true,
       },
     ],
+    [
+      WDIOQaseReporter,
+      {
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+        useCucumber: true,
+      },
+    ],
   ],
+
+  onPrepare: async function () {
+    await beforeRunHook();
+  },
+
+  onComplete: async function () {
+    await afterRunHook();
+  },
 
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
@@ -304,6 +327,12 @@ export const config: WebdriverIO.Config = {
         Buffer.from(screenshot, "base64"),
         "image/png",
       );
+
+      qase.attach({
+        name: "screenshot.png",
+        content: screenshot,
+        type: "image/png",
+      });
     }
   },
   /**
