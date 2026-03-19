@@ -31,17 +31,16 @@
 
 ### Commands
 
-| Command               | Description                                     |
-| --------------------- | ----------------------------------------------- |
-| `npm run wdio`        | Run all tests                                   |
-| `npm run wdio:serve`  | Run all tests and open Allure report in browser |
-| `npm run wdio:report` | Run all tests, generate and open Allure report  |
+| Command        | Description   |
+| -------------- | ------------- |
+| `npm run wdio` | Run all tests |
 
 ### Flags
 
 | Flag         | Description                                 | Example                                 |
 | ------------ | ------------------------------------------- | --------------------------------------- |
 | `--headless` | Run tests in headless mode (no browser UI)  | `npm run wdio -- --headless`            |
+| `--serve`    | Serve Allure report after tests complete    | `npm run wdio -- --serve`               |
 | `--@<tag>`   | Run only tests with a specific Cucumber tag | `npm run wdio -- --@automationexercise` |
 
 ### Examples
