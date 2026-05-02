@@ -2,6 +2,9 @@ import AllureReporter from "@wdio/allure-reporter";
 
 const isHeadless = process.argv.includes("--headless");
 
+const tagArg = process.argv.find((arg) => arg.startsWith("@"));
+const tags = tagArg || "";
+
 const specArg = process.argv.find(
   (arg) =>
     !arg.startsWith("-") &&
@@ -188,7 +191,7 @@ export const config: WebdriverIO.Config = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tags: "",
+    tags: tags,
     // <number> timeout for step definitions
     timeout: 60000,
     // <boolean> Enable this config to treat undefined definitions as warnings.

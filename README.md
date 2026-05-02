@@ -31,17 +31,19 @@
 
 ### Commands
 
-| Command        | Description   |
-| -------------- | ------------- |
-| `npm run wdio` | Run all tests |
+| Command                | Description                                 |
+| ---------------------- | ------------------------------------------- |
+| `npm run wdio`         | Run all tests                               |
+| `npm run allure:open`  | Open existing Allure report                 |
+| `npm run allure:serve` | Generate and serve Allure report            |
+| `npm run allure:clean` | Clean Allure results and report directories |
 
 ### Flags
 
-| Flag         | Description                                 | Example                                 |
-| ------------ | ------------------------------------------- | --------------------------------------- |
-| `--headless` | Run tests in headless mode (no browser UI)  | `npm run wdio -- --headless`            |
-| `--serve`    | Serve Allure report after tests complete    | `npm run wdio -- --serve`               |
-| `--@<tag>`   | Run only tests with a specific Cucumber tag | `npm run wdio -- --@automationexercise` |
+| Flag         | Description                                 | Example                            |
+| ------------ | ------------------------------------------- | ---------------------------------- |
+| `--headless` | Run tests in headless mode (no browser UI)  | `npm run wdio -- --headless`       |
+| `@<tag>`     | Run only tests with a specific Cucumber tag | `npm run wdio @automationexercise` |
 
 ### Examples
 
@@ -50,19 +52,19 @@
 npm run wdio -- --headless
 
 # Run only automationexercise tests
-npm run wdio -- --@automationexercise
+npm run wdio @automationexercise
 
-# Run only herokuapp tests with report
-npm run wdio -- --@herokuapp --serve
+# Open Allure report in browser
+npm run allure:serve
 
-# Run automationexercise tests headless and serve Allure report
-npm run wdio -- --headless --@automationexercise --serve
+# Clean Allure output
+npm run allure:clean
 
 # Run only register-user feature file
-npm run wdio -- register-user
+npm run wdio register-user
 
-# Run register-user feature headless with report
-npm run wdio -- register-user --headless --serve
+# Run register-user feature headless
+npm run wdio register-user -- --headless
 ```
 
 ## Code Quality Tools
