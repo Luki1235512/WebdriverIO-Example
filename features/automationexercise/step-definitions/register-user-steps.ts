@@ -2,7 +2,7 @@ import { Given, Then, When } from "@wdio/cucumber-framework";
 import AccountPage from "../pageobjects/account.page.js";
 import HomePage from "../pageobjects/home.page.js";
 import LoginPage from "../pageobjects/login.page.js";
-import SingupPage from "../pageobjects/signup.page.js";
+import SignupPage from "../pageobjects/signup.page.js";
 
 Given(/^I am on the homepage$/, async () => {
   await HomePage.open();
@@ -19,7 +19,7 @@ Then(/^I should see the home page$/, async () => {
 });
 
 When(/^I click on "Signup \/ Login" button$/, async () => {
-  await HomePage.singupLoginLink.click();
+  await HomePage.signupLoginLink.click();
 });
 
 Then(/^I should see "New User Signup!" text$/, async () => {
@@ -59,7 +59,7 @@ When(/^I click "Signup" button$/, async () => {
 });
 
 When(/^I fill in account information details$/, async () => {
-  await SingupPage.fillAccountInformationDetails({
+  await SignupPage.fillAccountInformationDetails({
     title: "Mr.",
     password: "TestPassword123!",
     dateOfBirth: { day: "1", month: "1", year: "1970" },
@@ -67,18 +67,18 @@ When(/^I fill in account information details$/, async () => {
 });
 
 When(/^I select Sign up for our newsletter! checkbox$/, async () => {
-  await SingupPage.newsletterCheckbox.click();
+  await SignupPage.newsletterCheckbox.click();
 });
 
 When(
   /^I select Receive special offers from our partners! checkbox$/,
   async () => {
-    await SingupPage.specialOffersCheckbox.click();
+    await SignupPage.specialOffersCheckbox.click();
   },
 );
 
 When(/^I fill in address information details$/, async () => {
-  await SingupPage.fillAddressInformationDetails({
+  await SignupPage.fillAddressInformationDetails({
     firstName: "John",
     lastName: "Doe",
     company: "Test Company",
@@ -93,7 +93,7 @@ When(/^I fill in address information details$/, async () => {
 });
 
 When(/^I click "Create Account" button$/, async () => {
-  await SingupPage.createAccountButton.click();
+  await SignupPage.createAccountButton.click();
 });
 
 When(/^I click "Continue" button$/, async () => {

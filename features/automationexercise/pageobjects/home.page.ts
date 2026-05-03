@@ -5,7 +5,7 @@ class HomePage extends Page {
     return $("#slider-carousel");
   }
 
-  public get singupLoginLink() {
+  public get signupLoginLink() {
     return $('a[href="/login"]');
   }
 
