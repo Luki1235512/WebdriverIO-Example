@@ -13,6 +13,10 @@ class HomePage extends Page {
     return $('//a[@href="/delete_account"]');
   }
 
+  public get loggedInHeading() {
+    return $('//a[i[@class="fa fa-user"] and contains(., "Logged in as")]');
+  }
+
   public async open() {
     await super.open();
     await this.handleConsentPopup();

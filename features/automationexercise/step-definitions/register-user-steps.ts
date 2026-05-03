@@ -23,25 +23,19 @@ When(/^I click on "Signup \/ Login" button$/, async () => {
 });
 
 Then(/^I should see "New User Signup!" text$/, async () => {
-  const heading = $(
-    `//div[@class="signup-form"]/h2[1][. = "New User Signup!"]`,
-  );
+  const heading = SignupPage.signupHeading;
   await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
 
 Then(/^I should see "Enter Account Information" text$/, async () => {
-  const heading = $(
-    `//h2[@class="title text-center"]/b[1][. = "Enter Account Information"]`,
-  );
+  const heading = SignupPage.accountInformationHeading;
   await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
 
 Then(/^I should see "Account Created!" text$/, async () => {
-  const heading = $(
-    `//h2[@data-qa="account-created"]//b[. = "Account Created!"]`,
-  );
+  const heading = AccountPage.accountCreatedHeading;
   await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
@@ -101,9 +95,7 @@ When(/^I click "Continue" button$/, async () => {
 });
 
 When(/^I should see "Logged in as" username$/, async () => {
-  const heading = $(
-    `//a[i[@class="fa fa-user"] and contains(., "Logged in as")]`,
-  );
+  const heading = HomePage.loggedInHeading;
   await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
@@ -113,9 +105,7 @@ When(/^I click "Delete Account" button$/, async () => {
 });
 
 Then(/^I should see "Account Deleted!" text$/, async () => {
-  const heading = $(
-    `//h2[@data-qa="account-deleted"]//b[. = "Account Deleted!"]`,
-  );
+  const heading = AccountPage.accountDeletedHeading;
   await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });

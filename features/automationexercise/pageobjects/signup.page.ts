@@ -102,6 +102,16 @@ class SingupPage extends Page {
     return $('//button[@data-qa="create-account"]');
   }
 
+  public get signupHeading() {
+    return $('//div[@class="signup-form"]/h2[1][. = "New User Signup!"]');
+  }
+
+  public get accountInformationHeading() {
+    return $(
+      '//h2[@class="title text-center"]/b[1][. = "Enter Account Information"]',
+    );
+  }
+
   public async fillAccountInformationDetails(details: AccountInformation) {
     await (details.title === "Mr." ? this.titleMr : this.titleMrs).click();
     await this.passwordInput.setValue(details.password);

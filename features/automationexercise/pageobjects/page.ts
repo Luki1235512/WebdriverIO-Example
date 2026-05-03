@@ -19,7 +19,6 @@ export default class Page {
 
       if (await consentButton.isDisplayed()) {
         await consentButton.click();
-        // await browser.pause(1000);
       }
     } catch {
       // Ignore error
