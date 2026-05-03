@@ -4,6 +4,8 @@ import HomePage from "../pageobjects/home.page.js";
 import LoginPage from "../pageobjects/login.page.js";
 import SignupPage from "../pageobjects/signup.page.js";
 
+let name: string;
+
 Given(/^I am on the homepage$/, async () => {
   await HomePage.open();
 });
@@ -36,8 +38,10 @@ Then(/^I should see "Account Created!" text$/, async () => {
 
 When(/^I enter name and email address$/, async () => {
   const timestamp = Date.now();
-  const name = `TestUser${timestamp}`;
+  name = `TestUser${timestamp}`;
   const email = `testuser${timestamp}@example.com`;
+
+  console.log(`email:${email}`);
 
   await LoginPage.fillSignupFields(name, email);
 });
@@ -89,7 +93,7 @@ When(/^I click "Continue" button$/, async () => {
 });
 
 When(/^I should see "Logged in as" username$/, async () => {
-  await HomePage.expectLoggedIn();
+  await HomePage.expectLoggedIn(name);
 });
 
 When(/^I click "Delete Account" button$/, async () => {

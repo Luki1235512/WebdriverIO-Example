@@ -1,8 +1,8 @@
 import Page from "./page.js";
 
 class HomePage extends Page {
-  private get loggedInHeading() {
-    return $('//a[i[@class="fa fa-user"] and contains(., "Logged in as")]');
+  private get loggedInAs() {
+    return $('//a[i[contains(@class,"fa fa-user")]]');
   }
 
   public get slider() {
@@ -17,9 +17,8 @@ class HomePage extends Page {
     return $('//a[@href="/delete_account"]');
   }
 
-  public async expectLoggedIn() {
-    const heading = this.loggedInHeading;
-    await expect(heading).toBeDisplayed();
+  public async expectLoggedIn(username: string) {
+    await expect(this.loggedInAs).toHaveText(`Logged in as ${username}`);
   }
 
   public async open() {
