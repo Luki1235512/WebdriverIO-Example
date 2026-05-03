@@ -1,6 +1,10 @@
 import Page from "./page.js";
 
 class HomePage extends Page {
+  private get loggedInHeading() {
+    return $('//a[i[@class="fa fa-user"] and contains(., "Logged in as")]');
+  }
+
   public get slider() {
     return $("#slider-carousel");
   }
@@ -13,8 +17,9 @@ class HomePage extends Page {
     return $('//a[@href="/delete_account"]');
   }
 
-  public get loggedInHeading() {
-    return $('//a[i[@class="fa fa-user"] and contains(., "Logged in as")]');
+  public async expectLoggedIn() {
+    const heading = this.loggedInHeading;
+    await expect(heading).toBeDisplayed();
   }
 
   public async open() {

@@ -23,18 +23,15 @@ When(/^I click on "Signup \/ Login" button$/, async () => {
 });
 
 Then(/^I should see "New User Signup!" text$/, async () => {
-  const heading = SignupPage.signupHeading;
-  await expect(heading).toBeDisplayed();
+  await SignupPage.expectNewUserSignup();
 });
 
 Then(/^I should see "Enter Account Information" text$/, async () => {
-  const heading = SignupPage.accountInformationHeading;
-  await expect(heading).toBeDisplayed();
+  await SignupPage.expectAccountInformation();
 });
 
 Then(/^I should see "Account Created!" text$/, async () => {
-  const heading = AccountPage.accountCreatedHeading;
-  await expect(heading).toBeDisplayed();
+  await AccountPage.expectAccountCreated();
 });
 
 When(/^I enter name and email address$/, async () => {
@@ -92,8 +89,7 @@ When(/^I click "Continue" button$/, async () => {
 });
 
 When(/^I should see "Logged in as" username$/, async () => {
-  const heading = HomePage.loggedInHeading;
-  await expect(heading).toBeDisplayed();
+  await HomePage.expectLoggedIn();
 });
 
 When(/^I click "Delete Account" button$/, async () => {
@@ -101,8 +97,7 @@ When(/^I click "Delete Account" button$/, async () => {
 });
 
 Then(/^I should see "Account Deleted!" text$/, async () => {
-  const heading = AccountPage.accountDeletedHeading;
-  await expect(heading).toBeDisplayed();
+  await AccountPage.expectAccountDeleted();
 });
 
 When(/^$/, async () => {

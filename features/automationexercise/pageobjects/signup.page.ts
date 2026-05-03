@@ -24,30 +24,78 @@ interface AccountInformation {
 }
 
 class SingupPage extends Page {
-  public get titleMr() {
-    // return $("#id_gender1");
+  private get titleMr() {
     return $('//div[@id="uniform-id_gender1"]');
   }
 
-  public get titleMrs() {
-    // return $("#id_gender2");
+  private get titleMrs() {
     return $('//div[@id="uniform-id_gender2"]');
   }
 
-  public get passwordInput() {
+  private get passwordInput() {
     return $('//input[@data-qa="password"]');
   }
 
-  public get daySelect() {
+  private get daySelect() {
     return $('//select[@data-qa="days"]');
   }
 
-  public get monthSelect() {
+  private get monthSelect() {
     return $('//select[@data-qa="months"]');
   }
 
-  public get yearSelect() {
+  private get yearSelect() {
     return $('//select[@data-qa="years"]');
+  }
+
+  private get firstNameInput() {
+    return $('//input[@data-qa="first_name"]');
+  }
+
+  private get lastNameInput() {
+    return $('//input[@data-qa="last_name"]');
+  }
+
+  private get companyInput() {
+    return $('//input[@data-qa="company"]');
+  }
+
+  private get addressInput() {
+    return $('//input[@data-qa="address"]');
+  }
+
+  private get address2Input() {
+    return $('//input[@data-qa="address2"]');
+  }
+
+  private get countrySelect() {
+    return $('//select[@data-qa="country"]');
+  }
+
+  private get stateInput() {
+    return $('//input[@data-qa="state"]');
+  }
+
+  private get cityInput() {
+    return $('//input[@data-qa="city"]');
+  }
+
+  private get zipcodeInput() {
+    return $('//input[@data-qa="zipcode"]');
+  }
+
+  private get mobileNumberInput() {
+    return $('//input[@data-qa="mobile_number"]');
+  }
+
+  private get signupHeading() {
+    return $('//div[@class="signup-form"]/h2[1][. = "New User Signup!"]');
+  }
+
+  private get accountInformationHeading() {
+    return $(
+      '//h2[@class="title text-center"]/b[1][. = "Enter Account Information"]',
+    );
   }
 
   public get newsletterCheckbox() {
@@ -58,58 +106,18 @@ class SingupPage extends Page {
     return $('//input[@id="optin"]');
   }
 
-  public get firstNameInput() {
-    return $('//input[@data-qa="first_name"]');
-  }
-
-  public get lastNameInput() {
-    return $('//input[@data-qa="last_name"]');
-  }
-
-  public get companyInput() {
-    return $('//input[@data-qa="company"]');
-  }
-
-  public get addressInput() {
-    return $('//input[@data-qa="address"]');
-  }
-
-  public get address2Input() {
-    return $('//input[@data-qa="address2"]');
-  }
-
-  public get countrySelect() {
-    return $('//select[@data-qa="country"]');
-  }
-
-  public get stateInput() {
-    return $('//input[@data-qa="state"]');
-  }
-
-  public get cityInput() {
-    return $('//input[@data-qa="city"]');
-  }
-
-  public get zipcodeInput() {
-    return $('//input[@data-qa="zipcode"]');
-  }
-
-  public get mobileNumberInput() {
-    return $('//input[@data-qa="mobile_number"]');
-  }
-
   public get createAccountButton() {
     return $('//button[@data-qa="create-account"]');
   }
 
-  public get signupHeading() {
-    return $('//div[@class="signup-form"]/h2[1][. = "New User Signup!"]');
+  public async expectNewUserSignup() {
+    const heading = this.signupHeading;
+    await expect(heading).toBeDisplayed();
   }
 
-  public get accountInformationHeading() {
-    return $(
-      '//h2[@class="title text-center"]/b[1][. = "Enter Account Information"]',
-    );
+  public async expectAccountInformation() {
+    const heading = this.accountInformationHeading;
+    await expect(heading).toBeDisplayed();
   }
 
   public async fillAccountInformationDetails(details: AccountInformation) {

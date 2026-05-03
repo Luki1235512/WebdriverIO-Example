@@ -1,15 +1,11 @@
 import Page from "./page.js";
 
 class LoginPage extends Page {
-  public get newUserSignupH2() {
-    return $('//div[@class="signup-form"]//h2');
-  }
-
-  public get NameInput() {
+  private get NameInput() {
     return $('//input[@data-qa="signup-name"]');
   }
 
-  public get emailInput() {
+  private get emailInput() {
     return $('//input[@data-qa="signup-email"]');
   }
 
