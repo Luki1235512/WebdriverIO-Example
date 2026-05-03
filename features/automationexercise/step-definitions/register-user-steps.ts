@@ -24,19 +24,16 @@ When(/^I click on "Signup \/ Login" button$/, async () => {
 
 Then(/^I should see "New User Signup!" text$/, async () => {
   const heading = SignupPage.signupHeading;
-  await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
 
 Then(/^I should see "Enter Account Information" text$/, async () => {
   const heading = SignupPage.accountInformationHeading;
-  await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
 
 Then(/^I should see "Account Created!" text$/, async () => {
   const heading = AccountPage.accountCreatedHeading;
-  await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
 
@@ -96,7 +93,6 @@ When(/^I click "Continue" button$/, async () => {
 
 When(/^I should see "Logged in as" username$/, async () => {
   const heading = HomePage.loggedInHeading;
-  await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
 
@@ -106,7 +102,6 @@ When(/^I click "Delete Account" button$/, async () => {
 
 Then(/^I should see "Account Deleted!" text$/, async () => {
   const heading = AccountPage.accountDeletedHeading;
-  await heading.waitForDisplayed();
   await expect(heading).toBeDisplayed();
 });
 
