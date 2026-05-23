@@ -1,5 +1,5 @@
 import { Given } from "@wdio/cucumber-framework";
-import { testContext } from "../step-definitions/test-context.js";
+import { testContext } from "../context/test-context.js";
 
 Given(/^I have registered user via API$/, async () => {
   const timestamp = Date.now();

@@ -1,6 +1,6 @@
 import { Given, Then, When } from "@wdio/cucumber-framework";
+import { testContext } from "../context/test-context.js";
 import HomePage from "../pageobjects/home.page.js";
-import { testContext } from "./test-context.js";
 
 Given(/^I am on the homepage$/, async () => {
   await HomePage.open();

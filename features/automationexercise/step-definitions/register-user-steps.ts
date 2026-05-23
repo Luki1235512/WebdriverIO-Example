@@ -1,8 +1,7 @@
 import { Then, When } from "@wdio/cucumber-framework";
-
+import { testContext } from "../context/test-context.js";
 import LoginPage from "../pageobjects/login.page.js";
 import SignupPage from "../pageobjects/signup.page.js";
-import { testContext } from "./test-context.js";
 
 Then(/^I should see "New User Signup!" text$/, async () => {
   await SignupPage.expectNewUserSignup();
