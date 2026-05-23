@@ -74,15 +74,18 @@ export const config: WebdriverIO.Config = {
     {
       browserName: "chrome",
       "goog:chromeOptions": {
-        args: isHeadless
-          ? [
-              "--headless",
-              "--disable-gpu",
-              "--window-size=1920,1080",
-              "--no-sandbox",
-              "--disable-dev-shm-usage",
-            ]
-          : [],
+        args: [
+          "--host-rules=MAP *.googlesyndication.com 0.0.0.0",
+          ...(isHeadless
+            ? [
+                "--headless",
+                "--disable-gpu",
+                "--window-size=1920,1080",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+              ]
+            : []),
+        ],
       },
       "wdio:enforceWebDriverClassic": true,
     },
