@@ -1,5 +1,5 @@
 import { Then, When } from "@wdio/cucumber-framework";
-import AccountPage from "../pageobjects/account.page.js";
+
 import LoginPage from "../pageobjects/login.page.js";
 import SignupPage from "../pageobjects/signup.page.js";
 import { testContext } from "./test-context.js";
@@ -10,10 +10,6 @@ Then(/^I should see "New User Signup!" text$/, async () => {
 
 Then(/^I should see "Enter Account Information" text$/, async () => {
   await SignupPage.expectAccountInformation();
-});
-
-Then(/^I should see "Account Created!" text$/, async () => {
-  await AccountPage.expectAccountCreated();
 });
 
 When(/^I enter name and email address$/, async () => {
@@ -66,12 +62,4 @@ When(/^I fill in address information details$/, async () => {
 
 When(/^I click "Create Account" button$/, async () => {
   await SignupPage.createAccountButton.click();
-});
-
-When(/^I click "Continue" button$/, async () => {
-  await AccountPage.continueButton.click();
-});
-
-Then(/^I should see "Account Deleted!" text$/, async () => {
-  await AccountPage.expectAccountDeleted();
 });

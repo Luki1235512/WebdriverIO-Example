@@ -92,6 +92,10 @@ class SingupPage extends Page {
     return $('//div[@class="signup-form"]/h2[1][. = "New User Signup!"]');
   }
 
+  private get loginHeading() {
+    return $('//div[@class="login-form"]/h2[1][. = "Login to your account"]');
+  }
+
   private get accountInformationHeading() {
     return $(
       '//h2[@class="title text-center"]/b[1][. = "Enter Account Information"]',
@@ -112,6 +116,11 @@ class SingupPage extends Page {
 
   public async expectNewUserSignup() {
     const heading = this.signupHeading;
+    await expect(heading).toBeDisplayed();
+  }
+
+  public async expectLoginToYourAccount() {
+    const heading = this.loginHeading;
     await expect(heading).toBeDisplayed();
   }
 
