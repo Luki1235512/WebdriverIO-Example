@@ -1,28 +1,8 @@
-import { Given, Then, When } from "@wdio/cucumber-framework";
+import { Then, When } from "@wdio/cucumber-framework";
 import AccountPage from "../pageobjects/account.page.js";
-import HomePage from "../pageobjects/home.page.js";
 import LoginPage from "../pageobjects/login.page.js";
 import SignupPage from "../pageobjects/signup.page.js";
-
-let name: string;
-
-Given(/^I am on the homepage$/, async () => {
-  await HomePage.open();
-});
-
-Then(/^I should see the home page$/, async () => {
-  await expect(browser).toHaveUrl(
-    expect.stringContaining("automationexercise.com"),
-  );
-  await expect(browser).toHaveTitle(
-    expect.stringContaining("Automation Exercise"),
-  );
-  await expect(HomePage.slider).toBeDisplayed();
-});
-
-When(/^I click on "Signup \/ Login" button$/, async () => {
-  await HomePage.signupLoginLink.click();
-});
+import { testContext } from "./test-context.js";
 
 Then(/^I should see "New User Signup!" text$/, async () => {
   await SignupPage.expectNewUserSignup();
@@ -38,12 +18,12 @@ Then(/^I should see "Account Created!" text$/, async () => {
 
 When(/^I enter name and email address$/, async () => {
   const timestamp = Date.now();
-  name = `TestUser${timestamp}`;
+  testContext.name = `TestUser${timestamp}`;
   const email = `testuser${timestamp}@example.com`;
 
   console.log(`email:${email}`);
 
-  await LoginPage.fillSignupFields(name, email);
+  await LoginPage.fillSignupFields(testContext.name, email);
 });
 
 When(/^I click "Signup" button$/, async () => {
@@ -92,18 +72,6 @@ When(/^I click "Continue" button$/, async () => {
   await AccountPage.continueButton.click();
 });
 
-When(/^I should see "Logged in as" username$/, async () => {
-  await HomePage.expectLoggedIn(name);
-});
-
-When(/^I click "Delete Account" button$/, async () => {
-  await HomePage.deleteAccountLink.click();
-});
-
 Then(/^I should see "Account Deleted!" text$/, async () => {
   await AccountPage.expectAccountDeleted();
-});
-
-When(/^$/, async () => {
-  //
 });
