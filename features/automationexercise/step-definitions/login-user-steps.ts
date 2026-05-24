@@ -11,6 +11,20 @@ When(/^I enter correct email address and password$/, async () => {
   await LoginPage.fillLoginFields(testContext.email, testContext.password);
 });
 
+When(/^I enter incorrect email address and password$/, async () => {
+  await LoginPage.fillLoginFields(
+    "incorrectEmail@example.com",
+    "incorrectPassword@!",
+  );
+});
+
 When(/^I click "login" button$/, async () => {
   await LoginPage.loginButton.click();
 });
+
+Then(
+  /^I should see "Your email or password is incorrect!" error$/,
+  async () => {
+    await LoginPage.expectLoginError();
+  },
+);

@@ -1,3 +1,4 @@
+import { expect } from "expect-webdriverio";
 import Page from "./page.js";
 
 class LoginPage extends Page {
@@ -25,6 +26,12 @@ class LoginPage extends Page {
     return $('//button[@data-qa="login-button"]');
   }
 
+  public get loginError() {
+    return $(
+      '//div[@class="login-form"]/form[1]/p[1][. = "Your email or password is incorrect!"]',
+    );
+  }
+
   public async fillSignupFields(name: string, email: string) {
     await this.nameInput.setValue(name);
     await this.signupEmailInput.setValue(email);
@@ -33,6 +40,11 @@ class LoginPage extends Page {
   public async fillLoginFields(email: string, password: string) {
     await this.loginEmailInput.setValue(email);
     await this.passwordInput.setValue(password);
+  }
+
+  public async expectLoginError() {
+    const loginError = this.loginError;
+    await expect(loginError).toBeDisplayed();
   }
 }
 
