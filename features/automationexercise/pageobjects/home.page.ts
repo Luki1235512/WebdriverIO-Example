@@ -17,6 +17,10 @@ class HomePage extends Page {
     return $('//a[@href="/delete_account"]');
   }
 
+  public get logoutButton() {
+    return $('//a[@href="/logout"]');
+  }
+
   public async expectLoggedIn(username: string) {
     await expect(this.loggedInAs).toHaveText(`Logged in as ${username}`);
   }

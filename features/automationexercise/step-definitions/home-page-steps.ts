@@ -27,3 +27,7 @@ When(/^I should see "Logged in as" username$/, async () => {
 When(/^I click "Delete Account" button$/, async () => {
   await HomePage.deleteAccountLink.click();
 });
+
+When(/^I click "Logout" button$/, async () => {
+  await HomePage.logoutButton.click();
+});
