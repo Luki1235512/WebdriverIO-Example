@@ -89,17 +89,15 @@ class SingupPage extends Page {
   }
 
   private get signupHeading() {
-    return $('//div[@class="signup-form"]/h2[1][. = "New User Signup!"]');
+    return $('//div[@class="signup-form"]/h2[1]');
   }
 
   private get loginHeading() {
-    return $('//div[@class="login-form"]/h2[1][. = "Login to your account"]');
+    return $('//div[@class="login-form"]/h2[1]');
   }
 
   private get accountInformationHeading() {
-    return $(
-      '//h2[@class="title text-center"]/b[1][. = "Enter Account Information"]',
-    );
+    return $('//h2[@class="title text-center"]/b[1]');
   }
 
   public get newsletterCheckbox() {
@@ -115,18 +113,17 @@ class SingupPage extends Page {
   }
 
   public async expectNewUserSignup() {
-    const heading = this.signupHeading;
-    await expect(heading).toBeDisplayed();
+    await expect(this.signupHeading).toHaveText("New User Signup!");
   }
 
   public async expectLoginToYourAccount() {
-    const heading = this.loginHeading;
-    await expect(heading).toBeDisplayed();
+    await expect(this.loginHeading).toHaveText("Login to your account");
   }
 
   public async expectAccountInformation() {
-    const heading = this.accountInformationHeading;
-    await expect(heading).toBeDisplayed();
+    await expect(this.accountInformationHeading).toHaveText(
+      "ENTER ACCOUNT INFORMATION",
+    );
   }
 
   public async fillAccountInformationDetails(details: AccountInformation) {

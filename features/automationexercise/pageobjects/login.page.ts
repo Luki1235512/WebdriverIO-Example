@@ -27,9 +27,7 @@ class LoginPage extends Page {
   }
 
   public get loginError() {
-    return $(
-      '//div[@class="login-form"]/form[1]/p[1][. = "Your email or password is incorrect!"]',
-    );
+    return $('//div[@class="login-form"]/form[1]/p[1]');
   }
 
   public async fillSignupFields(name: string, email: string) {
@@ -43,8 +41,9 @@ class LoginPage extends Page {
   }
 
   public async expectLoginError() {
-    const loginError = this.loginError;
-    await expect(loginError).toBeDisplayed();
+    await expect(this.loginError).toHaveText(
+      "Your email or password is incorrect!",
+    );
   }
 }
 

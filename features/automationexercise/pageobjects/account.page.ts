@@ -2,11 +2,11 @@ import Page from "./page.js";
 
 class AccountPage extends Page {
   private get accountCreatedHeading() {
-    return $('//h2[@data-qa="account-created"]//b[. = "Account Created!"]');
+    return $('//h2[@data-qa="account-created"]//b');
   }
 
   private get accountDeletedHeading() {
-    return $('//h2[@data-qa="account-deleted"]//b[. = "Account Deleted!"]');
+    return $('//h2[@data-qa="account-deleted"]//b');
   }
 
   public get continueButton() {
@@ -14,13 +14,11 @@ class AccountPage extends Page {
   }
 
   public async expectAccountCreated() {
-    const heading = this.accountCreatedHeading;
-    await expect(heading).toBeDisplayed();
+    await expect(this.accountCreatedHeading).toHaveText("ACCOUNT CREATED!");
   }
 
   public async expectAccountDeleted() {
-    const heading = this.accountDeletedHeading;
-    await expect(heading).toBeDisplayed();
+    await expect(this.accountDeletedHeading).toHaveText("ACCOUNT DELETED!");
   }
 }
 
