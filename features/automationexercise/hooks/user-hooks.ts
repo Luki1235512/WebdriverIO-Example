@@ -1,6 +1,11 @@
 import { Given } from "@wdio/cucumber-framework";
 import { testContext } from "../context/test-context.js";
 
+interface CreateAccountResponse {
+  responseCode: number;
+  message: string;
+}
+
 Given(/^I have registered user via API$/, async () => {
   const timestamp = Date.now();
   testContext.name = `TestUser${timestamp}`;
@@ -35,7 +40,7 @@ Given(/^I have registered user via API$/, async () => {
     },
   );
 
-  const data = await response.json();
+  const data = (await response.json()) as CreateAccountResponse;
   if (data.responseCode !== 201) {
     throw new Error(`Failed to create test user: ${data.message}`);
   }

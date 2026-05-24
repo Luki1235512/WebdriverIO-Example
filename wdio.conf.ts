@@ -303,7 +303,7 @@ export const config: WebdriverIO.Config = {
   afterStep: async function (_step, _scenario, result, _context) {
     if (!result.passed) {
       const screenshot = await browser.takeScreenshot();
-      AllureReporter.addAttachment(
+      await AllureReporter.addAttachment(
         "Screenshot on failure",
         Buffer.from(screenshot, "base64"),
         "image/png",
