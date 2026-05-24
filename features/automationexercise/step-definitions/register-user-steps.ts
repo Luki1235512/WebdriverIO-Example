@@ -15,9 +15,6 @@ When(/^I enter name and email address$/, async () => {
   const timestamp = Date.now();
   testContext.name = `TestUser${timestamp}`;
   const email = `testuser${timestamp}@example.com`;
-
-  console.log(`email:${email}`);
-
   await LoginPage.fillSignupFields(testContext.name, email);
 });
 

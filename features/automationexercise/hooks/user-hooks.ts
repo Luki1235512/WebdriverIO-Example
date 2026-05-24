@@ -44,4 +44,6 @@ Given(/^I have registered user via API$/, async () => {
   if (data.responseCode !== 201) {
     throw new Error(`Failed to create test user: ${data.message}`);
   }
+
+  console.log(`User created: ${testContext.email}:${testContext.password}`);
 });
