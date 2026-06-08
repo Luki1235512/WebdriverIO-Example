@@ -22,6 +22,14 @@ When(/^I click "Signup" button$/, async () => {
   await LoginPage.signupButton.click();
 });
 
+When(/^I enter name and already registered email address$/, async () => {
+  await LoginPage.fillSignupFields(testContext.name, testContext.email);
+});
+
+Then(/^I should see "Email Address already exist!" error$/, async () => {
+  await SignupPage.expectEmailAlreadyExist();
+});
+
 When(/^I fill in account information details$/, async () => {
   await SignupPage.fillAccountInformationDetails({
     title: "Mr.",

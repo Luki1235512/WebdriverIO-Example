@@ -1,4 +1,4 @@
-import { Given, Then, When } from "@wdio/cucumber-framework";
+import { Given, When } from "@wdio/cucumber-framework";
 import { testContext } from "../context/test-context.js";
 import HomePage from "../pageobjects/home.page.js";
 
@@ -6,7 +6,7 @@ Given(/^I am on the homepage$/, async () => {
   await HomePage.open();
 });
 
-Then(/^I should see the home page$/, async () => {
+Given(/^I should see the home page$/, async () => {
   await expect(browser).toHaveUrl(
     expect.stringContaining("automationexercise.com"),
   );

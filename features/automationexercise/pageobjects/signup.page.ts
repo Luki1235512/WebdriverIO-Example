@@ -92,6 +92,10 @@ class SingupPage extends Page {
     return $('//div[@class="signup-form"]/h2[1]');
   }
 
+  private get emailAlreadyExistError() {
+    return $('//div[@class="signup-form"]/form[1]/p[1]');
+  }
+
   private get loginHeading() {
     return $('//div[@class="login-form"]/h2[1]');
   }
@@ -123,6 +127,12 @@ class SingupPage extends Page {
   public async expectAccountInformation() {
     await expect(this.accountInformationHeading).toHaveText(
       "ENTER ACCOUNT INFORMATION",
+    );
+  }
+
+  public async expectEmailAlreadyExist() {
+    await expect(this.emailAlreadyExistError).toHaveText(
+      "Email Address already exist!",
     );
   }
 
