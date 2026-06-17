@@ -7,17 +7,17 @@ Given(/^I am on the homepage$/, async () => {
 });
 
 Given(/^I should see the home page$/, async () => {
-  await expect(browser).toHaveUrl(
-    expect.stringContaining("automationexercise.com"),
-  );
-  await expect(browser).toHaveTitle(
-    expect.stringContaining("Automation Exercise"),
-  );
+  await HomePage.expectHomePage();
+  await HomePage.expectHomePageTitle();
   await expect(HomePage.slider).toBeDisplayed();
 });
 
 When(/^I click on "Signup \/ Login" button$/, async () => {
   await HomePage.signupLoginLink.click();
+});
+
+When(/^I click on "Contact Us" button$/, async () => {
+  await HomePage.contactUsButton.click();
 });
 
 When(/^I should see "Logged in as" username$/, async () => {
