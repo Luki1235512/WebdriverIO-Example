@@ -18,8 +18,8 @@
     "wdio": "wdio run ./wdio.conf.ts",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,js,json,md}\"",
+    "format": "prettier --write \"**/*.{ts,js,json,md,feature}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,md,feature}\"",
     "prepare": "husky",
     "allure:open": "allure open allure-report",
     "allure:serve": "allure serve allure-results",
@@ -58,6 +58,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
+    "prettier-plugin-gherkin": "^4.0.0",
     "ts-node": "^10.9.2",
     "typescript-eslint": "^8.56.0"
   }

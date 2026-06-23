@@ -20,7 +20,7 @@ Feature: User Login on Automation Exercise
     Then I should see "Login to your account" text
     When I enter incorrect email address and password
     And I click "login" button
-    Then I should see "Your email or password is incorrect!" error 
+    Then I should see "Your email or password is incorrect!" error
 
   Scenario: Logout User
     Given I have registered user via API
